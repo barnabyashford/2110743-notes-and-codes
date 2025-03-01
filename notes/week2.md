@@ -389,9 +389,21 @@ We can use the remaining three hypothesis to "ask" the model, what kind of examp
 
 ## What Justifies this Inductive[^1] Leap
 
-<img width="565" alt="Screenshot 2568-03-02 at 01 52 43" src="https://github.com/user-attachments/assets/a7f66570-08d3-446b-93f6-0ba039039480" />
+**Given**:
 
-This generalisation is call a "bias". The decision on the unseen example to be as what you have generalised, learned from what you have seen.
+$$ + \langle Sunny, Warm, Normal, Strong, Cool, Change \rangle $$
+
+$$ + \langle Sunny, Warm, Normal, Weak, Warm, Same \rangle $$
+
+**Resulting Hypotheses**:
+
+$$ S : \langle Sunny, Warm, Normal, ?, ?, ? \rangle $$
+
+Why believe we can classify the unseen?
+
+$$ \langle Sunny, Warm, Normal, Strong, Warm, Same \rangle $$
+
+This "induction leap" is caused by a "bias". The decision on the unseen example to be as what you have generalised into your very own bias, learned from what you have seen.
 
 This is like when you were young, you thought what makes an animal a "Bird" is the fact that they can fly, but not all bird can fly! That is your bias! While not true, it can still help you decide correctly in some cases.
 
@@ -465,50 +477,6 @@ where $A \vdash B$ means $A$ logically entails $B$
 ## Inductive Systems and Equivalent Deductive[^2] Systems
 
 <img width="613" alt="Screenshot 2568-03-02 at 03 39 34" src="https://github.com/user-attachments/assets/c60274cc-4cfd-4a28-932f-186c01fb8cfe" />
-
-> We can also make GitHub markdown interpreter render a diagram for us as well, but that is too much work. Try changing the `plaintext` to `mermaid` in the code below.
-
-```plaintext
-graph LR
-
-TrainEx["Training examples"]
-NewIns["New instance"]
-
-subgraph IndSys["Inductive System"]
-  CEA@{ shape: text, label: "Candidate Elimination Algorithm" }
-  UseHypSpace@{ shape: text, label: "Using Hypothesis Space ***H*** " }
-end
-
-Cls["Classification of new instance, or 'don't know'"]
-
-TrainEx --> CEA
-NewIns --> UseHypSpace
-IndSys --> Cls
-
-```
-
-```plaintext
-graph LR
-
-TrainEx["Training examples"]
-NewIns["New instance"]
-Assrt["Assertion '***H*** contains the target concept"]
-
-subgraph DedSys["Equivalent Deductive System"]
-  TheoProv@{ shape: text, label: "Theorem Prover" }
-end
-
-Cls["Classification of new instance, or 'don't know'"]
-
-TrainEx --> DedSys
-NewIns --> DedSys
-Assrt --> DedSys
-DedSys --> Cls
-
-AssrtNote@{ shape: text, label: "Inductive bias made explicit" }
-AssrtNote --> Assrt
-
-```
 
 [^2]: Deductive systems works with fact, while inductive systems works with pattern and trends of the training data. The "Equivalent Deductive System" is meant to imitate the Inductive System to prove its bias by taking the same input with additional bias value.
 
