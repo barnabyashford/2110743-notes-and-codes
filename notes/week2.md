@@ -464,7 +464,11 @@ where $A \vdash B$ means $A$ logically entails $B$
 
 ## Inductive Systems and Equivalent Deductive[^2] Systems
 
-```mermaid
+<img width="613" alt="Screenshot 2568-03-02 at 03 39 34" src="https://github.com/user-attachments/assets/c60274cc-4cfd-4a28-932f-186c01fb8cfe" />
+
+> We can also make GitHub markdown interpreter render a diagram for us as well, but that is too much work. Try changing the `plaintext` to `mermaid` in the code below.
+
+```plaintext
 graph LR
 
 TrainEx["Training examples"]
@@ -483,7 +487,7 @@ IndSys --> Cls
 
 ```
 
-```mermaid
+```plaintext
 graph LR
 
 TrainEx["Training examples"]
