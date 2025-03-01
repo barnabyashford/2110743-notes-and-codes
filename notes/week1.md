@@ -170,9 +170,12 @@ Example:
 
 ##### Possible definition of $V$ function
 
-<img width="512" alt="Screenshot 2568-03-01 at 18 20 12" src="https://github.com/user-attachments/assets/5c2b88fa-c87d-409a-a5de-4f19f2375cde" />
+- if $b$ is a final board state that is won, then $V(b) = 100$
+- if $b$ is a final board state that is lost, then $V(b) = -100$
+- if $b$ is a final board state that is drawn, then $V(b) = 0$
+- if $b$ is a not a final state in the game, then $V(b) = V(b^\prime)$, where $b^\prime$ is the best final board state that can be achieved starting from $b$ and playing optimally until the end of the game.
 
-Problem: How do we know if a player plays optimally?
+This gives correct values, but is not operational, because to do this, we have to calculate from every single possible step after $b$ and every single possible step after each and so on. That is too much to compute as checkers has time limit per turn.
 
 #### How do we represent the function?
 
