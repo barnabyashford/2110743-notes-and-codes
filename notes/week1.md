@@ -164,7 +164,7 @@ Example:
     - how do we define the function?
     - how do we choose a move?
 
-- $V : Board \rightarrow R$
+- $V : Board \rightarrow \Re$
   - $R$: heuristic score of the $Board$ state
   - Better than $ChooseMove$ function, because the returned value is a numerical data. Easier to understand, easier to optimize.
 
@@ -196,13 +196,15 @@ features:
 - $bt(b)$: number of red pieces threatened by black
 - $rt(b)$: number of black pieces threatened by red
 
-Features might not be equal, we need a way to 'weight' them. Here we have the 'parameters' to learn: $W$ : $w_0, w_1, w_2, w_3, w_4, w_5, w_6$
+Features might not be equal, we need a way to 'weight' them. Here we have the 'parameters' to learn: $W : \\{ w_0, w_1, w_2, w_3, w_4, w_5, w_6 \\}$
 
 #### Obtaining Training Examples
 
 - $V(b)$: the true target function (no one knows)
 - $\hat{V}(b)$: the learned function (basically the model)
-- $V_{train}(b)$: the training value (in the the form of \<$X$, $y$\>; \<($bp(b)$, $rp(b)$, $bk(b)$, $rp(b)$, $bt(b)$, $rt(b)$), score\>)
+- $V_{train}(b)$: the training value in the the form of:
+
+$$ \langle (bp(b), rp(b), bk(b), rp(b), bt(b), rt(b)), TargetValue \rangle $$
 
 One rule for estimating training value:
 
