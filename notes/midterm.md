@@ -198,4 +198,45 @@ features:
 - $bt(b)$: number of red pieces threatened by black
 - $rt(b)$: number of black pieces threatened by red
 
-Features might not be equal, we need a way to 'weight' them. Here we have the 'parameters' to learn: $W$: $\{ w_0, w_1, w_2, w_3, w_4, w_5, w_6 \}$
+Features might not be equal, we need a way to 'weight' them. Here we have the 'parameters' to learn: $W$ : $w_0, w_1, w_2, w_3, w_4, w_5, w_6$
+
+##### Obtaining Training Examples
+
+- $V(b)$: the true target function (no one knows)
+- $\hat{V}(b)$: the learned function (basically the model)
+- $V_{train}(b)$: the training value (in the the form of \<$X$, $y$\>; \<($bp(b)$, $rp(b)$, $bk(b)$, $rp(b)$, $bt(b)$, $rt(b)$), score\>)
+
+One rule for estimating training value:
+
+- $V_{train}(b) \leftarrow \hat{V}(Successor(b))$
+
+> This example implements the idea of breadth first search, i.e., from a given $b$, think of all possible next step and calculate scores for all scenarios and sum them to return as $Successor(b)$
+
+##### Choose Weight Tuning Rule
+
+**LMS Weight update rule**:
+
+1. Compute $error(b)$:
+
+$$ error(b) = V_{train}(b) - \hat{V}(b) $$
+
+2. For each board feature $f_i$, update weight $w_i$:
+
+$$ w_i \leftarrow w_i + c \cdot f_i \cdot error(b) $$
+
+$c$ : learning rate (a small constant, you can tune it.)
+
+##### Design Choice
+
+<img width="457" alt="Screenshot 2568-03-01 at 19 32 37" src="https://github.com/user-attachments/assets/a70a6e1b-9a98-499f-bbbb-ea211fbcaff1" />
+
+### Some issues in ML
+
+- Which algorithm for which use case?
+- How does number of training examples influence accuracy?
+- How does complexity of hypothesis representation impact it?
+- How does noisy data influence accuracy?
+- What are the theoretical limits of learnability?
+- How can prior knowledge of learner help?
+- What clues can we get from biological learning systems? (e.g., perceptron learning)
+- How can systems alter their own representations?
