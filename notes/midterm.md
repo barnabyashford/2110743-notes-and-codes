@@ -189,9 +189,13 @@ There are many ways to represent the target function:
 
 $$ w_0 + w_1 \cdot bp(b) + w_2 \cdot rp(b) + w_3 \cdot bk(b) + w_4 \cdot rk(b) + w_5 \cdot bt(b) + w_6 \cdot rt(b) $$
 
+features:
+
 - $bp(b)$: number of black pieces on board $b$
 - $rp(b)$: number of red pieces on board $b$
 - $bk(b)$: number of black kings on board $b$
 - $rp(b)$: number of red kings on board $b$
 - $bt(b)$: number of red pieces threatened by black
 - $rt(b)$: number of black pieces threatened by red
+
+Features might not be equal, we need a way to 'weight' them. Here we have the 'parameters' to learn: $W$: $\{ w_0, w_1, w_2, w_3, w_4, w_5, w_6 \}$
