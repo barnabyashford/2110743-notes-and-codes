@@ -151,6 +151,47 @@ Example: Playing checkers
   - Direct: telling explicitly if a step the model takes is good or not
   - Indirect: let the model take all the steps until finish and evaluate the entire result
  
-- Teacher or not? (supervise vs unsupervised)
+- Teacher or not? (supervised vs unsupervised)
 
 **consider this**: is the training example representative of the objective of learning?
+
+##### Choosing target function
+
+be sure to choose the function that are easy to define and easy to optimize.
+
+Example:
+
+- $ChooseMove : Board \rightarrow Move$
+  - Problems:
+    - how do we define the function?
+    - how do we choose a move?
+
+- $V : Board \rightarrow R$
+  - $R$: heuristic score of the $Board$ state
+  - Better than $ChooseMove$ function, because the returned value is a numerical data. Easier to understand, easier to optimize.
+
+###### Possible definition of $V$ function
+
+<img width="512" alt="Screenshot 2568-03-01 at 18 20 12" src="https://github.com/user-attachments/assets/5c2b88fa-c87d-409a-a5de-4f19f2375cde" />
+
+Problem: How do we know if a player plays optimally?
+
+##### How do we represent the function?
+
+There are many ways to represent the target function:
+
+- rules
+- neural network
+- polynomial function of board features
+- linear function
+
+##### Linear function
+
+$$ w_0 + w_1 \cdot bp(b) + w_2 \cdot rp(b) + w_3 \cdot bk(b) + w_4 \cdot rk(b) + w_5 \cdot bt(b) + w_6 \cdot rt(b) $$
+
+- $bp(b)$: number of black pieces on board $b$
+- $rp(b)$: number of red pieces on board $b$
+- $bk(b)$: number of black kings on board $b$
+- $rp(b)$: number of red kings on board $b$
+- $bt(b)$: number of red pieces threatened by black
+- $rt(b)$: number of black pieces threatened by red
