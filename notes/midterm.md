@@ -2,76 +2,10 @@
 
 ## Week 01: Introduction to ML
 
-### Why ML?
+## Week 02: Hypothesis Space, Concept Learning, Version Space
 
-<!-- summarise -->
+## Week 03: Decision Tree Learning
 
-### Three niches for ML
+## Week 04: Univariate Linear Regression
 
-<!-- summarise -->
-
-#### Data Mining
-
-<!-- summarise -->
-
-#### Software applications impossible for programming by hand
-
-<!-- summarise -->
-
-#### Self customising programs
-
-<!-- summarise -->
-
-### Where is ML headed?
-
-<!-- summarise -->
-
-### Relevant Disciplines
-
-<!-- summarise -->
-
-### Learning Problem
-
-<!-- summarise -->
-
-#### Learning to play checkers
-
-<!-- summarise -->
-
-##### Type of Training Experience (Examples)
-
-<!-- summarise -->
-
-##### Choosing target function
-
-<!-- summarise -->
-
-###### Possible definition of $V$ function
-
-<!-- summarise -->
-
-##### How do we represent the function?
-
-<!-- summarise -->
-
-##### Linear function
-
-<!-- summarise -->
-
-##### Obtaining Training Examples
-
-<!-- summarise -->
-
-##### Choose Weight Tuning Rule
-
-<!-- summarise -->
-
-##### Design Choice
-
-<!-- summarise -->
-
-### Some issues in ML
-
-<!-- summarise -->
-
-## Week 02: Learning from examples
+## Week 05: Multivariate Linear Regression and Logistic Regression
