@@ -8,7 +8,7 @@
 
 > Where y-axis means Price (in 1000s of dollars) and x-axis means Size (feet<sup>2</sup>)
 
-**Supervised Learning**: Given the "right answer" for each example in the data.
+**Supervised Learning**: Give the "right answer" for each example in the data.
 
 **Regression Problem**: Predict real-valued output
 
