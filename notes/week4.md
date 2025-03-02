@@ -81,7 +81,9 @@ Cost function: $J(\theta_0, \theta_1)$
 
 > From the term simplifiable as $(InputFeature - TargetValue)^2$, this is called "Squared error function".
 
-## Cost Function intuition I
+## Cost Function intuition
+
+### Part I
 
 | Component | Default | Simplified |
 | :---: | :---: | :---: |
@@ -97,6 +99,47 @@ Cost function: $J(\theta_0, \theta_1)$
 
 <img width="615" alt="Screenshot 2568-03-02 at 08 51 51" src="https://github.com/user-attachments/assets/d9e1956c-1eb5-4498-8615-585d8450e3e1" />
 
+## Part II
+
+**Hypothesis** : $h_{\theta}(x) = \theta_0 + \theta_1 x$
+
+**Parameters** : $\theta_0, \theta_1$
+
+**Cost Function** : $J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$
+
+**Goal** : $\underset{\theta_0, \theta_1}{\text{minimize }} J(\theta_0, \theta_1)$
+
+<img width="542" alt="Screenshot 2568-03-02 at 18 14 11" src="https://github.com/user-attachments/assets/2e789da0-67c1-4ea7-9629-b4446c96a004" />
+
+<img width="489" alt="Screenshot 2568-03-02 at 18 14 28" src="https://github.com/user-attachments/assets/0f5990e5-2ea2-4751-8276-b9e572dcf2a4" />
+
+<img width="541" alt="Screenshot 2568-03-02 at 18 14 41" src="https://github.com/user-attachments/assets/cd0a3901-446b-4464-aee0-2c18b3fe93a8" />
+
+<img width="542" alt="Screenshot 2568-03-02 at 18 14 53" src="https://github.com/user-attachments/assets/395905c0-8ea0-418d-8a09-d3b8a02efaec" />
+
+<img width="522" alt="Screenshot 2568-03-02 at 18 15 02" src="https://github.com/user-attachments/assets/6ab8c4a1-7b2f-4206-95cd-3e61f9278caf" />
+
+<img width="551" alt="Screenshot 2568-03-02 at 18 15 11" src="https://github.com/user-attachments/assets/a25a32e3-3f4d-478b-a8b3-75d75d8e34c2" />
+
+## Gradient Descent
+
+A function: $J(\theta_0, \theta_1)$  
+Goal: $\underset{\theta_0, \theta_1}{\text{min }} J(\theta_0, \theta_1)$
+
+**Outline**:
+
+- Start with some $\theta_0, \theta_1$
+- Keep changing $\theta_0, \theta_1$ to reduce $J(\theta_0, \theta_1)$ until we hopefully end up at a minimum
+
+<img width="460" alt="Screenshot 2568-03-02 at 18 17 54" src="https://github.com/user-attachments/assets/9df22fa9-aec5-4646-b014-bb72d603b04d" />
+
+<img width="519" alt="Screenshot 2568-03-02 at 18 18 04" src="https://github.com/user-attachments/assets/e8cfb940-c6b4-41e1-956a-f563d593f586" />
+
+### Gradient Descent Algorithm
+
+$\text{repeat until convergence }\\{$  
+$$ \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} (\text{for }j=0\text{ and }j=1) $$  
+$\\}$
 
 
 
