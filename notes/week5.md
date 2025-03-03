@@ -354,4 +354,59 @@ Threshold classifier output $h_\theta(x)$ at o.5:
 Classification: $y = 0 \text{ or } 1$  
 $h_\theta(x)$ can be $>1$ or $<0$
 
-$$ \underset{\text{the task is classfication, not regression}}{\text{Logistic Regression}}: 0 \leq h_\theta(x) \leq 1 $$
+$$ \underset{\text{the task is classfication (predict discreet value), not regression (predict continuous value)}}{\text{Logistic Regression}}: 0 \leq h_\theta(x) \leq 1 $$
+
+## Hypothesis representation
+
+**Logistic Regression Model**
+
+Find $0 \leq h_\theta(x) \leq 1$
+
+linear regression: $h_\theta(x) = \theta^{\top} x$
+
+How do we keep $h_\theta(x)$ between 0 and 1 if the encoded labels range more than that? We use "Logistic Function" (Here we use "Sigmoid Function" $g(z)$ ).
+
+$$ g(z) = \frac{1}{1 + e^{-z}} $$
+
+$$ h_\theta(x) = g(\theta^{\top} x) = \frac{1}{1 + e^{-\theta^{\top} x}} $$
+
+<img width="312" alt="Screenshot 2568-03-03 at 19 26 36" src="https://github.com/user-attachments/assets/82a68289-1182-47db-b503-25b338764413" />
+
+**Interpretation of Hypothesis Output**
+
+$h_\theta(x)$ = estimated probability that $y = 1$ on input x
+
+Example: If
+
+```math
+x = \begin{bmatrix} x_0 \\ x_1 \end{bmatrix} = \begin{bmatrix} 1 \\ tumourSize \end{bmatrix}
+```
+
+$$ h_theta(x) = 0.7 $$
+
+Tell the patient that the chance of the tumour being malignant is 70%.
+
+"probability that $y = 1$, given $x$, parameterised by $\theta$"
+
+$$ \text{Given the nature of probability}: P(y = 0) + P(y = 1) = 1 $$
+
+$$ P(y = 0 \mid x ; \theta) = 1 - P(y = 1 \mid x ; \theta) $$
+
+Therefore,
+
+$$ h_\theta(x) = P(y = 1 \mid x ; \theta) $$
+
+## Decision Boundary
+
+**Logistic Regression**
+
+$$ h_\theta(x) = g(\theta^{\top} x) $$
+
+$$ g(z) = \frac{1}{1 + e^{-z}} $$
+
+Suppose:
+
+predict " $y = 1$ if $h_\theta(x) \geq 0.5$ "
+
+predict " $y = 0$ if $h_\theta(x) < 0.5$ "
+
