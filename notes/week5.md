@@ -321,3 +321,37 @@ What if $X^{\top} X$ is non-invertible?
 # Logistic Regression
 
 ## Classification
+
+Given an instance (a datapoint with information as values of different features/attrubutes.), let a machine (the ML model) try to give a "label" to that instance.
+
+Example use case:
+- Email: Spam/Not Spam
+- Online: Transactions: Fraudulent (Yes/No)?
+- Tumour: Malignant/Benign
+
+These are examples of a subcategoty of classification task known as "binary classification". (Two labels: 0/1, yes/no)
+
+$$ y \in \\{\underset{0:\text{"Negative Class (e.g., benign tumour)"}}{0}, \underset{1:\text{"Positive Class (e.g., malignant tumour)"}}{1}\\} $$
+
+If there are more than two labels, this subcategory is called "multiclass classification".
+
+$$ y \in \\{0, 1, 2, 3\\} $$
+
+Like Linear Regression, Logistic Regression implements linear function as its target function. However, this doesn't mean that you can use the function to "classify" right away.
+
+<img width="626" alt="Screenshot 2568-03-03 at 16 14 08" src="https://github.com/user-attachments/assets/dc4663f1-657c-40d2-88d6-21a69fbae09f" />
+
+If we use pure linear function like the one we use in Linear Regression, it will output put a continuous value (let's call it $\hat{y}$) that is: $0 \leq hat{y} \leq 1$. This is because the classes are depicted to the model as numbers (0,1), making the lowest possible label to be 0 and highest 1. 
+
+This is not ideal. Given that the outputs are continuos values $\hat{y}$ that are $0 \leq hat{y} \leq 1$, if we plot the linear function onto the graph, we will get a straight line, and give the model another instance to train on and plot the graph again, the straight line will change drastically.
+
+**How do we fix this?**:
+
+Threshold classifier output $h_\theta(x)$ at o.5:
+- If $h_\theta(x) \geq 0.5$, predict "y=1"
+- If $h_\theta(x) < 0.5$, predict "y=0"
+
+Classification: $y = 0 \text{ or } 1$  
+$h_\theta(x)$ can be $>1$ or $<0$
+
+$$ \underset{\text{the task is classfication, not regression}}{\text{Logistic Regression}}: 0 \leq h_\theta(x) \leq 1 $$
