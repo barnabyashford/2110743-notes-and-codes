@@ -271,6 +271,8 @@ $\\}$
 
 <img width="540" alt="Screenshot 2568-03-03 at 00 35 36" src="https://github.com/user-attachments/assets/08a11173-63b2-4a69-afb5-3580fc6a43cf" />
 
+**Step by step GD weight update**:
+
 <img width="551" alt="Screenshot 2568-03-03 at 00 35 54" src="https://github.com/user-attachments/assets/9173c984-0e4e-495c-b648-e4775a271edd" />
 
 <img width="565" alt="Screenshot 2568-03-03 at 00 36 03" src="https://github.com/user-attachments/assets/7dba1d8f-960b-4cfc-a270-1cf6d3d563bc" />
