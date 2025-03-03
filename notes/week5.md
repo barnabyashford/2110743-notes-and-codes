@@ -406,7 +406,67 @@ $$ g(z) = \frac{1}{1 + e^{-z}} $$
 
 Suppose:
 
-predict " $y = 1$ if $h_\theta(x) \geq 0.5$ "
+- predict " $y = 1$ if $h_\theta(x) \geq 0.5$ "
+  - $g(z) \geq 0.5 \text{ when } z \geq 0$
+  - $\theta^{\top} x \geq 0$
 
-predict " $y = 0$ if $h_\theta(x) < 0.5$ "
+- predict " $y = 0$ if $h_\theta(x) < 0.5$ "
+  - $g(z) < 0.5 \text{ when } z < 0$
+  - $\theta^{\top} x < 0$
+
+**Decision Boundary**
+
+$$ h_\theta(x) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2) $$
+
+```math
+\text{If } \theta = \begin{bmatrix} -3 \\ 1 \\ 1 \end{bmatrix} \quad \text{Then } h_\theta(x) = g(-3 + 1 x_1 + 1 x_2)
+```
+
+$$ \text{Predict } \underbrace{y = 1}_{x_1 + x_2 \geq 3} \text{ if } \underbrace{-3 + x_1 + x_2 \geq 0}\_{\theta^{\top} x} $$
+
+<img width="605" alt="Screenshot 2568-03-03 at 20 14 10" src="https://github.com/user-attachments/assets/68f4e9de-3992-4104-8ba7-61bccaf6b2bf" />
+
+**Non-linear decistion boundaries**
+
+Polynomial features
+
+$$ h_\theta(x) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_{1}^{2} + \theta_4 x_{2}^{2}) $$
+
+```math
+\text{If } \theta = \begin{bmatrix} -1 \\ 0 \\ 0 \\ 1 \\ 1 \end{bmatrix} \quad \text{Then } h_\theta(x) = g(-1 + 0 x_1 + 0 x_2 + 1 x_{1}^{2} + 1 x_{2}^{2})
+```
+$$ \text{Predict } y = 1 \text{ if } \underbrace{-3 + x_1 + x_2 \geq 0}\_{x_{1}^{2} + x_{2}^{2} \geq 1} $$
+
+<img width="217" alt="Screenshot 2568-03-03 at 20 28 52" src="https://github.com/user-attachments/assets/3341755d-b03f-4109-bf5c-6f5aa2e4b367" />
+
+It can expand as far as we want it to.
+
+$$ h_\theta(x) = g(\theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_{1}^{2} + \theta_4 x_{1}^{2} x_2 + \theta_5 x_{1}^{2} x_{2}^{2} + \theta_6 x_{1}^{3} x_2 + \cdots) $$
+
+<img width="175" alt="Screenshot 2568-03-03 at 20 29 05" src="https://github.com/user-attachments/assets/465a976d-1457-4ccf-8c71-7c84acb03bb0" />
+
+## Cost function
+
+Training set $\\{ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots, (x^{(m)}, y^{(m)}) \\}$
+
+$m$ examples
+
+```math
+x \in \begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_n \end{bmatrix} \in ℝ^{n + 1} \quad x_0 = 1, y \in \{ 0,1 \}
+```
+
+$$ h_\theta(x) = \frac{1}{1-e^{-\theta^{\top} x}} $$
+
+How do we choose parameter $\theta$ ?
+
+**Cost function**
+
+Linear Regression = $J(\theta) \frac{1}{2m} \frac{1}{2} (h_theta(x^{(i)}) - y^{(i)})^2$
+
+
+
+
+
+
+
 
