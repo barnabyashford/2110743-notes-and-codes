@@ -370,7 +370,11 @@ I_{\text{example}} = \begin{bmatrix} 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 \\ 0
 
 $D$ = Any non-invertible matrix
 
-$D pinv(D)$ will result in a matrix with its nature similar to that of an identity matrix with small numbers close to 1 instead of just 1.
+$D pinv(D)$ will result in a matrix with its nature similar to that of an identity matrix with small numbers close to 1 instead of just 1. For example,
+
+```math
+D pinv(D) = \begin{bmatrix} 0.96 & 0 & 0 & 0 & 0 \\ 0 & 0.808 & 0 & 0 & 0 \\ 0 & 0 & 0.76 & 0 & 0 \\ 0 & 0 & 0 & 0.9 & 0 \\ 0 & 0 & 0 & 0 & 0.9907 \end{bmatrix}
+```
 
 How can $X^{\top} X$ potentially be non-invertible?
 
