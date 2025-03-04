@@ -43,7 +43,7 @@ What we want to learn from these examples: what is the general concept?
 
 ## Representing Hypotheses
 
-Hypothesis ($h$): conjunction of constraints ($\land$) on attributes (all attributes as a logical value (i.e., True/False) connected with logical `AND` operation.)
+Hypothesis ($h$): conjunction ($\land$) of constraints on attributes (all attributes as a logical value (i.e., True/False) connected with logical `AND` operation.)
 
 Each constraint can be:
 - Specific value (e.g., $"Water = Warm"$)
