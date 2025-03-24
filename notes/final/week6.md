@@ -249,8 +249,8 @@ As for gradient descent:
 Initialise all weights to small random numbers.
 Until satisfied, Do
 - For each training example, Do
-  1. Input the training example to the network and compute the network outputs
-  2. For each output unit $k$
+1. Input the training example to the network and compute the network outputs
+2. For each output unit $k$
 ```math
 \delta_k \leftarrow \delta_k (1 - o_k) (t_k - o_k)
 ```
@@ -268,7 +268,73 @@ w_{i,j} \leftarrow w_{i,j} + \Delta w_{i,j}
 ```
     
 <img width="615" alt="Screenshot 2568-03-24 at 17 05 36" src="https://github.com/user-attachments/assets/4b6762a2-cae3-474e-a2a7-73417106c5e4" />
+
 > This is how a neural network normally works.
+
+some interesting issues:
+
+- Gradient Descent over entrie network weight vector
+- Easily generalised to any architecture
+- Non-convex
+  - Still works well in practice. (It can be run many times with different initialisation.)
+- Often include weight momentum $\alpha$
+```math
+\Delta w_{i,j} (n) = \eta \delta_i x_{i,j} + \alpha \Delta w_{i,j} (n-1)
+```
+- Minimises error over training examples
+  - Same old problems: will it generalise?
+- Training can take thousands of iterations &rarr; slow!
+- Using network after training (inference) is very fast!
+
+### Learning Hidden Layer Representations
+
+<img width="567" alt="Screenshot 2568-03-24 at 17 23 05" src="https://github.com/user-attachments/assets/0314a34d-504d-43f2-b3e2-0c0df15a5506" />
+
+Can this be learned? (Yeah)
+
+<img width="547" alt="Screenshot 2568-03-24 at 17 23 29" src="https://github.com/user-attachments/assets/e615a279-a473-4d51-98bd-1525c4ae3397" />
+
+If we look closely:
+
+<img width="486" alt="Screenshot 2568-03-24 at 17 24 18" src="https://github.com/user-attachments/assets/c1487d1f-0f28-44fe-8855-d38a7569938f" />
+
+- we can see that the hidden values, if rounded are bascially 3 bits representation!
+
+#### Training
+
+<img width="483" alt="Screenshot 2568-03-24 at 17 25 27" src="https://github.com/user-attachments/assets/c2d7db41-d131-4c35-b19b-7b5b58c0ddf2" />
+
+<img width="479" alt="Screenshot 2568-03-24 at 17 25 57" src="https://github.com/user-attachments/assets/88366d9a-4bed-4644-a001-3c9c9bc49c28" />
+
+<img width="450" alt="Screenshot 2568-03-24 at 17 26 18" src="https://github.com/user-attachments/assets/3088cec2-f4da-4f85-b407-4103b181b804" />
+
+#### Convergence of Backpropagation
+
+Gradient descent to some local minimum
+- Perhaps not global
+- Try add **momentum**
+- SGD!
+- Train multiple networks with different initial weights
+
+Nature of convergence
+- Initilaise weights near zero (don't initialise with big values)
+- Therefore, initial networks near-linear
+- Increasingly non-linear functions possible as training progresses
+
+## Expressive Capabilities of ANNs
+
+Boolean functions:
+- Every boolean function can be represented by network with a single hidden layer (but maybe many nodes)
+
+Continuous functions:
+- Every bounded continuous function can be approximated with small error with just one hidden layer
+
+
+
+
+
+
+
 
 
 
