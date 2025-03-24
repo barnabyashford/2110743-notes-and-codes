@@ -327,19 +327,45 @@ Boolean functions:
 - Every boolean function can be represented by network with a single hidden layer (but maybe many nodes)
 
 Continuous functions:
-- Every bounded continuous function can be approximated with small error with just one hidden layer
+- Every bounded continuous function can be approximated with small error with just one hidden layer (again with immense number of nodes)
+- Any function can be approximated to almost perfect accuracy by a network with two hidden layers
 
+## Overfitting in ANNs
 
+Like any model with impressive ability to fit to any data, ANNs tend to overfit to the training data.
 
+<img width="411" alt="Screenshot 2568-03-24 at 21 34 37" src="https://github.com/user-attachments/assets/84dcedeb-68ba-4fae-908a-932e69969010" />
 
+In a long run, errors will always decrease, but once it is converged any additional training will cause the error to go up. Therefore it is highly recommended to always monitor the error graph to see if the error has started rising.
 
+<img width="420" alt="Screenshot 2568-03-24 at 21 34 48" src="https://github.com/user-attachments/assets/f6aba5d3-6330-4c7e-9db0-ea0af28b1fb7" />
 
+Additionally, make sure to not look at the graph at a window too small, so that we don't mistake a local minimum as a global one
 
+## Alternative Error Functions
 
+We can penalise large weights (like regularisation in Linear Regression and Logistic Regression)
 
+```math
+E (\vec{w}) \equiv \frac{1}{2} \sum_{d \in D} \sum_{k \in outputs} (t_{kd} - o_{kd})^2 + \gamma \sum_{i,j} w_{ji}^{2}
+```
+> Here we add regularisation term: $+ \gamma \sum_{i,j} w_{ji}^{2}$ to penalise the large weights
 
+Or we can train on slopes as well
 
+```math
+E (\vec{w}) \equiv \frac{1}{2} \sum_{d \in D} \sum_{k \in outputs} \left[ (t_{kd} - o_{kd})^2 + \mu \sum_{j \in inputs} \left( \frac{\partial t_{kd}}{\partial x_{d}^{j}} - \frac{\partial o_{kd}}{\partial x_{d}^{j}} \right)^{2} \right]
+```
+> Here we do not focus on calculating errors by comparing output values with target values, but we compare their slope (in error graph as well).
 
+We can tie weights together as well! (e.g., like in CNN, the convolutional filter is this exact tied weights)
 
+## Recurrent Networks
 
+Unlike normal feedforward networks, the Recurrent Networks uses the output of a time step to be the input of the next.
 
+<img width="349" alt="Screenshot 2568-03-24 at 21 46 38" src="https://github.com/user-attachments/assets/b04b1b03-b353-4eb7-b3cc-1359f2d2d7df" />
+
+Still don't get it? Here's the visualisation as mimic feedforward
+
+<img width="280" alt="Screenshot 2568-03-24 at 21 48 57" src="https://github.com/user-attachments/assets/095dc91c-3886-439a-994b-f44079b412c9" />
