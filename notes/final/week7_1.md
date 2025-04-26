@@ -119,3 +119,15 @@ Probability $P(r)$ of $r$ heads in $n$ coin flips, if $p$ = $\Pr(heads)$
 ```math
 E[X] \equiv \sum_{i = 0}^{n} iP(i) = np
 ```
+
+- Variance of $X$ is
+
+```math
+Var(X) \equiv E[(X - E[X])^{2}] = np(1-p)
+```
+
+- Standard deviation of $X$, $\sigma_{X}$, is
+
+```math
+\sigma_{X} \equiv \sqrt{E[(X - E[X])^{2}]} = \sqrt{np(1 - p)}
+```
