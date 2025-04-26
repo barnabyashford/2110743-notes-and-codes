@@ -318,7 +318,7 @@ i.e., the expected difference in true error between hypotheses output by learner
 
 But, given limited data $D_{0}$, what is a good estimator?
 
-- could partition $D_{0}$ into training set $S$ and training set $T_{0}$, and measure
+- could partition $D_{0}$ into training set $S_{0}$ and test set $T_{0}$, and measure
 
 ```math
 error_{T_{0}} (L_{A}(S_{0})) - error_{T_{0}} (L_{B}(S_{0}))
