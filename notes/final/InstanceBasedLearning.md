@@ -141,3 +141,79 @@ One approach:
 - To choose $z_n$: Use cross-validation to automatically choose weight $z_1, \dots, z_n$.
 - Setting $z_j$ to zero to eliminate $j$th irrelevant dimension.
 
+## Locally Weighted Regression
+
+$k$NN forms local approximation to $f$ for each query point $x_q$. Here we form a "model"
+
+- Fit a linear function to $k$ nearest neighbour &rarr; e.g., find $k$ nearest points and fit linear regression model
+- or even quadratic, ...
+- Produces "piecewise approximation" to $f$ &rarr; approximation of $k$ nearest neighbours
+
+Errors to minimise:
+
+- SE over $k$ neighbours
+
+```math
+E_1(x_q) \equiv \frac{1}{2} \sum_{x \in \text{nearest neighbours of }x_q} (f(x) - \hat{f}(x))^2
+```
+
+- Distance-weighted SE over all neighbours
+
+```math
+E_2(x_q) \equiv \sum_{x \in D} (f(x) - \hat{f}(x))^2 K(d(x_q, x))
+```
+
+## Radial Basis Function (RBF) Networks
+
+- Global approximation from linear combination of local approximations
+- Used in many implementation e.g., Image Classification
+- A different kind of neural network
+- Closely related to distance-weighted regression, but is a "eager" learning while most instance based learning algorithms are "lazy"
+
+<img width="484" alt="Screenshot 2568-04-28 at 21 09 46" src="https://github.com/user-attachments/assets/620183a2-2188-4e17-8140-176d88c2cc6f" />
+
+> Note that there isn't any weight applied to inputs yet. Each hidden nodes represents each example $ex_k$, each input will be measured for their distance between themselves and examples, then the result are linear combination of all (with $w_0$ of course).
+
+Where $a_i(x)$ are the attributes describing instance $x$, and
+
+```math
+f(x) = w_0 + \sum_{u = 1}^{k} w_u K_u (d(x_u, x))
+```
+
+One common choice for $K_u(d(x_u, x))$ is
+
+```math
+K_u(d(x_u, x)) = e^{\frac{1}{2 \sigma_{u}^{2}} d^{2}(x_u,x)}
+```
+
+Note: $x_u$ is the centre of normal distribution graph (as seen in the image)
+
+### Training RBF Networks
+
+Q1: What $x_u$ to use for each kernel function $K_u(d(x_u,x))$ (Where do you get them?)
+
+- Training instances? &rarr; reflect actual distribution, high cost, there's too many
+- Scatter uniformly throughout the instance space &rarr; randomly pick from the instace space and hope that the chosen data reflects the actual distribution
+
+Q2: How do we train weights? (normally use Gaussian $K_u$)
+
+- First choose variance (and perhaps mean) for each $K_u$ &rarr; initialisaion perhaps?
+ - e.g., use EM
+- Then hold $K_u$ fixed, and train linear output layer
+ - efficient methods to fit linear funciton
+
+## Case-Based Reasoning
+
+Specifically designed for symbolic data, applicable with algorithms mentioned earlier
+
+## Lazy and Eager Learning
+
+**Lazy** &rarr; wait for query before generalising
+
+**Eager** &rarr; generalise before seeing query
+
+Does it matter?
+
+- Eager learner try to find global approximation
+- While lazy learner create local approximation (depends on the query)
+- If use the same $H$, lazy can represent a more complex functions (many query-focused approximation).
