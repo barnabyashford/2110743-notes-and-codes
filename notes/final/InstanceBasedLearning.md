@@ -1,4 +1,12 @@
-# Instance-based Learning
+# Instance Based Learning
+
+- $k$-Nearest Neighbour
+- Locally weighted regression
+- Radial basis functions
+- Case-based reasoning
+- Lazy and eager learning
+
+## Instance Based Learning
 
 Key idea: store all training data as $\langle x_i,f(x_i) \rangle$
 
@@ -73,3 +81,63 @@ Nearest Neighbour ($k=1$):
 
 - The bigger the training data is, the nearer it approaches Gibbs Algorithm  
   Gibbs: with probability $p(x)$ predict 1, else 0
+
+  > Gibbs Algorithm: from a hypothesis space $H$, randomly pick a hypothesis $h$.
+  > 
+  > In this case: A query instance $x_q$ is blindly put in the space and the nearest neighbour was chosen, each size of dataset will return different answer.
+
+$k$-Nearest Neighbour:
+
+- The bigger the training data is, and the bigger $k$ is, the nearer it approaches Bayes Optimal  
+  Bayes Optimal: if $p(x) > .5$ then predict 1, else 0
+
+  > Bayes Optimal: using many datapoints to help answering the question.
+  > 
+  > In this case: Every nearest $k$ neighbours helps answering the question
+
+***Note :*** Gibbs algorithm's error is twice the expected error of Bayes optimal
+
+## Distance-Weighted $k$NN
+
+Idea: Using distance to tune weights for each datapoint as compared to $x_q$
+
+Want to weight nearer neighbour more heavily:
+
+```math
+\hat{f}(x_q) \leftarrow \frac{\sum_{i=1}^{k} w_i f(x_i)}{\sum_{i=1}^{k} w_i}
+```
+
+where:
+
+```math
+w_i \equiv \frac{1}{d(x_q, x_i)^2}
+```
+
+Therefore, the case earlier:
+
+| $x$ | $f(x)$ |
+| --- | --- |
+| 1 | 3.8 |
+| 3 | 10.2 |
+| 7 | 22 |
+| 10 | 20 |
+
+$k = 3$, $x_q = 2$
+
+```math
+\hat{f}(2) = \frac{3.8 \times \frac{1}{1} + 10.2 \times \frac{1}{1} + 22 \times \frac{1}{25}}{\frac{1}{1} + \frac{1}{1} + \frac{1}{25}} = 7.3
+```
+
+> See that now the result gets more reasonable, as earlier the result seems weird for 2 to get 12 while 1 get 3.8 and 3 get 10.2.
+
+## Curse of Dimensionality
+
+Imagine instances described by 20 attributes, but only 2 are relevant
+
+*Curse of Dimensionality:* nearest neighbour is easily mislead when high-dimensional
+
+One approach:
+- Stretch $j$th axis by weight $z_j$, where $z_1, \dots, z_n$ chosen to minimise prediction error &rarr; the idea is the let the relevant axis measures closer while non-relevant gets further and harder to affect the decision.
+- To choose $z_n$: Use cross-validation to automatically choose weight $z_1, \dots, z_n$.
+- Setting $z_j$ to zero to eliminate $j$th irrelevant dimension.
+
